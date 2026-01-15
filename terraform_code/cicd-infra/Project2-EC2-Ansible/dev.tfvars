@@ -4,4 +4,4 @@ ami                    = "ami-068c0051b15cdb816"
     key_name               = "Keypair_10"
     project_name           = "project-2"
     env                    = "dev"
-    unique_ids              = ["Jenkins-Master","Jenkins-Build-Slave",]
+    unique_ids              = ["Ansible-Control-Node"]

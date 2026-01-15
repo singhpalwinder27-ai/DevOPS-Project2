@@ -1,0 +1,36 @@
+---
+ - name: this playbook is to install jenkins on amazon linux
+   hosts: Jenkins-Master
+   become: true
+   tasks:
+     - name: install java 21
+       yum: 
+         name: java-21-amazon-corretto
+         state: present
+     - name: add jenkins repo
+       get_url: 
+         url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+         dest: /etc/yum.repos.d/jenkins.repo
+
+     - name: import the jenkins gpg key
+       command: sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+     - name: install jenkins
+       yum:
+         name: jenkins
+         state: present
+
+     - name: enable and start jenkins service
+       systemd: 
+         name: jenkins
+         enabled: yes
+
+     - name: enable jenkins to start at boot time
+       service: 
+         name: jenkins
+         enabled: yes 
+
+      
+
+
+
