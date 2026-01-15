@@ -1,0 +1,22 @@
+---
+ - name: to setup jenkins slave
+   hosts: Jenkins-Slave
+   become: true
+   tasks:
+     - name: install java 21
+       yum: 
+         name: java-21-amazon-corretto
+         state: present
+
+     - name: download maven package
+       get_url:
+         url: https://dlcdn.apache.org/maven/maven-3/3.9.12/binaries/apache-maven-3.9.12-bin.tar.gz
+         dest: /opt
+
+     - name: extract the maven package
+       unarchive: 
+         src: /opt/apache-maven-3.9.12-bin.tar.gz
+         dest: /opt
+         remote_src: yes
+
+     
