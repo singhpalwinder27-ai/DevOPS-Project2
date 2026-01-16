@@ -32,7 +32,7 @@
 
      - name: print git version
        debug: 
-         msg: "{ git_version.stdout }"
+         msg: "{{ git_version.stdout }}"
        tags: install_git
     
 
