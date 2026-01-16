@@ -19,4 +19,21 @@
          dest: /opt
          remote_src: yes
 
+     - name: install git
+       yum:
+         name: git
+         state: present
+       tags: install_git
+
+     - name: check git version
+       shell: git --version
+       tags: Check git version
+       register: git_version
+
+     - name: print git version
+       debug: 
+         msg: "{ git_version.stdout }"
+       tags: install_git
+    
+
      
