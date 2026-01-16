@@ -25,9 +25,9 @@
          state: present
        tags: install_git
 
-     - name: check git version
-       shell: git --version
-       tags: Check git version
+     - name: check_git_version
+       command: git --version
+       tags: check_git_version
        register: git_version
 
      - name: print git version
